@@ -1,0 +1,303 @@
+{
+  "route": "Codex CLI -> official Chrome DevTools MCP 1.10.1 -> native WebMCP",
+  "events": [
+    {
+      "invocation": "text(await tools.mcp__chrome_webmcp__list_webmcp_tools({pageId:2}));",
+      "responses": [
+        "## WebMCP tools\nname=\"get_analysis_context\", description=\"現在の店舗・期間・指標・集計軸、画面版、データ版と参照可能範囲を取得します。分析前および人が条件を変えた後に使います。\", inputSchema={\"type\":\"object\",\"properties\":{},\"required\":[],\"additionalProperties\":false}, annotations={\"readOnly\":true,\"untrustedContent\":false,\"consequential\":false}\nname=\"compare_periods\", description=\"2期間の値・差分・増減率を店舗別、カテゴリ別または商品別に比較します。省略した条件は context_id の画面条件を引き継ぎます。画面は変更しません。表示は present_result で行います。\", inputSchema={\"type\":\"object\",\"properties\":{\"context_id\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":128},\"base_period\":{\"type\":\"object\",\"properties\":{\"start\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":10},\"end\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":10}},\"required\":[\"start\",\"end\"],\"additionalProperties\":false},\"target_period\":{\"type\":\"object\",\"properties\":{\"start\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":10},\"end\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":10}},\"required\":[\"start\",\"end\"],\"additionalProperties\":false},\"metric\":{\"type\":\"string\",\"enum\":[\"net_sales\",\"gross_profit\",\"units\",\"gross_margin\",\"avg_unit_price\"]},\"group_by\":{\"type\":\"string\",\"enum\":[\"store\",\"category\",\"product\"]},\"filters\":{\"type\":\"object\",\"properties\":{\"store_ids\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":128},\"minItems\":1,\"maxItems\":10,\"description\":\"1件以上。現在条件は get_analysis_context から取得。\"},\"category_ids\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":128},\"minItems\":0,\"maxItems\":20,\"description\":\"空配列は選択店舗の全カテゴリ。\"},\"product_ids\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":128},\"minItems\":0,\"maxItems\":20,\"description\":\"空配列は選択カテゴリの全商品。\"}},\"required\":[\"store_ids\"],\"additionalProperties\":false},\"limit\":{\"type\":\"integer\",\"minimum\":1,\"maximum\":100}},\"required\":[\"context_id\"],\"additionalProperties\":false}, annotations={\"readOnly\":true,\"untrustedContent\":false,\"consequential\":false}\nname=\"query_metrics\", description=\"指定期間の売上、粗利、数量または比率を集計します。省略した条件は context_id の画面条件を使います。比率は分子・分母を再集計します。画面は変更しません。\", inputSchema={\"type\":\"object\",\"properties\":{\"context_id\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":128},\"base_period\":{\"type\":\"object\",\"properties\":{\"start\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":10},\"end\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":10}},\"required\":[\"start\",\"end\"],\"additionalProperties\":false},\"target_period\":{\"type\":\"object\",\"properties\":{\"start\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":10},\"end\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":10}},\"required\":[\"start\",\"end\"],\"additionalProperties\":false},\"metric\":{\"type\":\"string\",\"enum\":[\"net_sales\",\"gross_profit\",\"units\",\"gross_margin\",\"avg_unit_price\"]},\"group_by\":{\"type\":\"string\",\"enum\":[\"store\",\"category\",\"product\"]},\"filters\":{\"type\":\"object\",\"properties\":{\"store_ids\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":128},\"minItems\":1,\"maxItems\":10,\"description\":\"1件以上。現在条件は get_analysis_context から取得。\"},\"category_ids\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":128},\"minItems\":0,\"maxItems\":20,\"description\":\"空配列は選択店舗の全カテゴリ。\"},\"product_ids\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":128},\"minItems\":0,\"maxItems\":20,\"description\":\"空配列は選択カテゴリの全商品。\"}},\"required\":[\"store_ids\"],\"additionalProperties\":false},\"limit\":{\"type\":\"integer\",\"minimum\":1,\"maximum\":100}},\"required\":[\"context_id\"],\"additionalProperties\":false}, annotations={\"readOnly\":true,\"untrustedContent\":false,\"consequential\":false}\nname=\"present_result\", description=\"取得済みの結果を条件・表・グラフと一緒に表示します。可逆な画面変更です。画面が変わった場合は古い結果を拒否します。VIEW_CHANGED の後は条件取得・再集計が必要です。\", inputSchema={\"type\":\"object\",\"properties\":{\"result_id\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":128},\"expected_view_version\":{\"type\":\"integer\",\"minimum\":1},\"view_type\":{\"type\":\"string\",\"enum\":[\"table\",\"bar\"]}},\"required\":[\"result_id\",\"expected_view_version\",\"view_type\"],\"additionalProperties\":false}, annotations={\"readOnly\":false,\"untrustedContent\":false,\"consequential\":false}\nname=\"create_report_draft\", description=\"集計結果を根拠として、新しい未保存のレポート下書きをページ内に作ります。既存の下書きは編集しません。保存・共有・送信は行いません。同じキー・同じ内容の再実行は重複しません。\", inputSchema={\"type\":\"object\",\"properties\":{\"result_ids\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":128},\"minItems\":1,\"maxItems\":5},\"title\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":100},\"notes\":{\"type\":\"string\",\"maxLength\":2000},\"idempotency_key\":{\"type\":\"string\",\"minLength\":1,\"maxLength\":128}},\"required\":[\"result_ids\",\"title\",\"notes\",\"idempotency_key\"],\"additionalProperties\":false}, annotations={\"readOnly\":false,\"untrustedContent\":true,\"consequential\":false}"
+      ]
+    },
+    {
+      "invocation": "text(await tools.mcp__chrome_webmcp__execute_webmcp_tool({pageId:2,toolName:\"get_analysis_context\",input:\"{}\"}));",
+      "responses": [
+        {
+          "status": "Completed",
+          "output": {
+            "base_period": {
+              "start": "2026-08-31",
+              "end": "2026-09-06"
+            },
+            "target_period": {
+              "start": "2026-09-07",
+              "end": "2026-09-13"
+            },
+            "metric": "net_sales",
+            "group_by": "store",
+            "filters": {
+              "store_ids": [
+                "S01",
+                "S02",
+                "S03",
+                "S04",
+                "S05",
+                "S06",
+                "S07",
+                "S08",
+                "S09",
+                "S10"
+              ],
+              "category_ids": [],
+              "product_ids": []
+            },
+            "context_id": "ctx_cli_1",
+            "view_version": 1,
+            "dataset_snapshot_id": "synthetic-retail-20260913-v1",
+            "business_as_of": "2026-09-18",
+            "data_through": "2026-09-13",
+            "allowed_store_ids": [
+              "S01",
+              "S02",
+              "S03",
+              "S04",
+              "S05",
+              "S06",
+              "S07",
+              "S08",
+              "S09",
+              "S10"
+            ],
+            "categories": {
+              "C01": "飲料",
+              "C02": "食品",
+              "C03": "日用品",
+              "C04": "菓子",
+              "C05": "冷凍食品",
+              "C06": "雑貨"
+            },
+            "products": {
+              "C01-P1": {
+                "category_id": "C01",
+                "name": "飲料・商品1"
+              },
+              "C01-P2": {
+                "category_id": "C01",
+                "name": "飲料・商品2"
+              },
+              "C02-P1": {
+                "category_id": "C02",
+                "name": "食品・商品1"
+              },
+              "C02-P2": {
+                "category_id": "C02",
+                "name": "食品・商品2"
+              },
+              "C03-P1": {
+                "category_id": "C03",
+                "name": "日用品・商品1"
+              },
+              "C03-P2": {
+                "category_id": "C03",
+                "name": "日用品・商品2"
+              },
+              "C04-P1": {
+                "category_id": "C04",
+                "name": "菓子・商品1"
+              },
+              "C04-P2": {
+                "category_id": "C04",
+                "name": "菓子・商品2"
+              },
+              "C05-P1": {
+                "category_id": "C05",
+                "name": "冷凍食品・商品1"
+              },
+              "C05-P2": {
+                "category_id": "C05",
+                "name": "冷凍食品・商品2"
+              },
+              "C06-P1": {
+                "category_id": "C06",
+                "name": "雑貨・商品1"
+              },
+              "C06-P2": {
+                "category_id": "C06",
+                "name": "雑貨・商品2"
+              }
+            },
+            "metrics": {
+              "net_sales": "円",
+              "gross_profit": "円",
+              "units": "点",
+              "gross_margin": "比率",
+              "avg_unit_price": "円/点"
+            },
+            "current_result_id": null
+          }
+        }
+      ]
+    },
+    {
+      "invocation": "text(await tools.mcp__chrome_webmcp__execute_webmcp_tool({pageId:2,toolName:\"compare_periods\",input:JSON.stringify({context_id:\"ctx_cli_1\"})}));",
+      "responses": [
+        {
+          "status": "Completed",
+          "output": {
+            "ok": true,
+            "result_id": "r_cli_2",
+            "query_hash": "63c9604c67dc95e32bc03fde",
+            "query": {
+              "context_id": "ctx_cli_1",
+              "kind": "compare",
+              "target_period": {
+                "start": "2026-09-07",
+                "end": "2026-09-13"
+              },
+              "metric": "net_sales",
+              "group_by": "store",
+              "filters": {
+                "store_ids": [
+                  "S01",
+                  "S02",
+                  "S03",
+                  "S04",
+                  "S05",
+                  "S06",
+                  "S07",
+                  "S08",
+                  "S09",
+                  "S10"
+                ],
+                "category_ids": [],
+                "product_ids": []
+              },
+              "limit": 100,
+              "base_period": {
+                "start": "2026-08-31",
+                "end": "2026-09-06"
+              }
+            },
+            "dataset_snapshot_id": "synthetic-retail-20260913-v1",
+            "metric_definition_version": "retail-metrics-v1",
+            "data_through": "2026-09-13",
+            "timezone": "Asia/Tokyo",
+            "unit": "円",
+            "rows": [
+              {
+                "id": "S03",
+                "label": "S03",
+                "base": 8000000,
+                "target": 6400000,
+                "delta": -1600000,
+                "change_rate": -0.2,
+                "net_delta_share": 0.8
+              },
+              {
+                "id": "S01",
+                "label": "S01",
+                "base": 12000000,
+                "target": 11300000,
+                "delta": -700000,
+                "change_rate": -0.058333333333333334,
+                "net_delta_share": 0.35
+              },
+              {
+                "id": "S04",
+                "label": "S04",
+                "base": 10000000,
+                "target": 10000000,
+                "delta": 0,
+                "change_rate": 0,
+                "net_delta_share": 0
+              },
+              {
+                "id": "S05",
+                "label": "S05",
+                "base": 10000000,
+                "target": 10000000,
+                "delta": 0,
+                "change_rate": 0,
+                "net_delta_share": 0
+              },
+              {
+                "id": "S06",
+                "label": "S06",
+                "base": 10000000,
+                "target": 10000000,
+                "delta": 0,
+                "change_rate": 0,
+                "net_delta_share": 0
+              },
+              {
+                "id": "S07",
+                "label": "S07",
+                "base": 10000000,
+                "target": 10000000,
+                "delta": 0,
+                "change_rate": 0,
+                "net_delta_share": 0
+              },
+              {
+                "id": "S08",
+                "label": "S08",
+                "base": 10000000,
+                "target": 10000000,
+                "delta": 0,
+                "change_rate": 0,
+                "net_delta_share": 0
+              },
+              {
+                "id": "S09",
+                "label": "S09",
+                "base": 10000000,
+                "target": 10000000,
+                "delta": 0,
+                "change_rate": 0,
+                "net_delta_share": 0
+              },
+              {
+                "id": "S10",
+                "label": "S10",
+                "base": 8000000,
+                "target": 8000000,
+                "delta": 0,
+                "change_rate": 0,
+                "net_delta_share": 0
+              },
+              {
+                "id": "S02",
+                "label": "S02",
+                "base": 12000000,
+                "target": 12300000,
+                "delta": 300000,
+                "change_rate": 0.025,
+                "net_delta_share": -0.15
+              }
+            ],
+            "totals": {
+              "base": 100000000,
+              "target": 98000000,
+              "delta": -2000000,
+              "change_rate": -0.02
+            },
+            "row_count": 10,
+            "truncated": false,
+            "other_totals": null,
+            "warnings": [
+              "差分寄与は構成上の内訳であり、原因の証明ではありません。"
+            ],
+            "duration_ms": 1.132
+          }
+        }
+      ]
+    },
+    {
+      "invocation": "text(await tools.mcp__chrome_webmcp__execute_webmcp_tool({pageId:2,toolName:\"present_result\",input:JSON.stringify({result_id:\"r_cli_2\",expected_view_version:1,view_type:\"bar\"})}));",
+      "responses": [
+        {
+          "status": "Completed",
+          "output": {
+            "ok": true,
+            "result_id": "r_cli_2",
+            "view_version": 2
+          }
+        }
+      ]
+    },
+    {
+      "invocation": "text(await tools.mcp__chrome_webmcp__take_snapshot({pageId:2}));",
+      "responses": [
+        "## Latest page snapshot\nuid=1_0 RootWebArea \"売上分析 | Retail Insight\" url=\"http://127.0.0.1:8765/\"\n  uid=1_1 banner\n    uid=1_2 StaticText \"Retail Insight\"\n    uid=1_3 heading \"売上分析\" level=\"1\"\n    uid=1_4 link \"下書き 0件\" url=\"http://127.0.0.1:8765/#draft-section\"\n      uid=1_5 StaticText \"下書き 0件\"\n  uid=1_6 main\n    uid=1_7 StaticText \"サンプルデータ · 2026年6月16日〜9月13日\"\n    uid=1_8 status atomic live=\"polite\" relevant=\"additions text\"\n    uid=1_9 region \"集計条件\"\n      uid=1_10 heading \"集計条件\" level=\"2\"\n      uid=1_11 button \"8/31〜9/13の週次比較\"\n      uid=1_12 button \"7月と8月を比較\"\n      uid=1_13 StaticText \"店舗\"\n      uid=1_14 listbox \"対象店舗\" multiselectable orientation=\"vertical\"\n        uid=1_15 option \"S01\" selectable selected value=\"S01\"\n        uid=1_16 option \"S02\" selectable selected value=\"S02\"\n        uid=1_17 option \"S03\" selectable selected value=\"S03\"\n        uid=1_18 option \"S04\" selectable selected value=\"S04\"\n        uid=1_19 option \"S05\" selectable selected value=\"S05\"\n        uid=1_20 option \"S06\" selectable selected value=\"S06\"\n        uid=1_21 option \"S07\" selectable selected value=\"S07\"\n        uid=1_22 option \"S08\" selectable selected value=\"S08\"\n        uid=1_23 option \"S09\" selectable selected value=\"S09\"\n        uid=1_24 option \"S10\" selectable selected value=\"S10\"\n      uid=1_25 StaticText \"複数選択可\"\n      uid=1_26 StaticText \"比較期間の開始\"\n      uid=1_27 Date \"比較期間の開始\" value=\"2026-08-31\"\n        uid=1_28 spinbutton \"年 年\" value=\"2026\" valuemax=\"2026\" valuemin=\"2026\" valuetext=\"\"\n        uid=1_29 StaticText \"/\"\n        uid=1_30 spinbutton \"月 月\" value=\"8\" valuemax=\"9\" valuemin=\"6\" valuetext=\"\"\n        uid=1_31 StaticText \"/\"\n        uid=1_32 spinbutton \"日 日\" value=\"31\" valuemax=\"31\" valuemin=\"1\" valuetext=\"\"\n        uid=1_33 button \"日付選択ツールを表示 日付選択ツールを表示\" haspopup=\"menu\"\n      uid=1_34 StaticText \"比較期間の終了\"\n      uid=1_35 Date \"比較期間の終了\" value=\"2026-09-06\"\n        uid=1_36 spinbutton \"年 年\" value=\"2026\" valuemax=\"2026\" valuemin=\"2026\" valuetext=\"\"\n        uid=1_37 StaticText \"/\"\n        uid=1_38 spinbutton \"月 月\" value=\"9\" valuemax=\"9\" valuemin=\"6\" valuetext=\"\"\n        uid=1_39 StaticText \"/\"\n        uid=1_40 spinbutton \"日 日\" value=\"6\" valuemax=\"31\" valuemin=\"1\" valuetext=\"\"\n        uid=1_41 button \"日付選択ツールを表示 日付選択ツールを表示\" haspopup=\"menu\"\n      uid=1_42 StaticText \"対象期間の開始\"\n      uid=1_43 Date \"対象期間の開始\" value=\"2026-09-07\"\n        uid=1_44 spinbutton \"年 年\" value=\"2026\" valuemax=\"2026\" valuemin=\"2026\" valuetext=\"\"\n        uid=1_45 StaticText \"/\"\n        uid=1_46 spinbutton \"月 月\" value=\"9\" valuemax=\"9\" valuemin=\"6\" valuetext=\"\"\n        uid=1_47 StaticText \"/\"\n        uid=1_48 spinbutton \"日 日\" value=\"7\" valuemax=\"31\" valuemin=\"1\" valuetext=\"\"\n        uid=1_49 button \"日付選択ツールを表示 日付選択ツールを表示\" haspopup=\"menu\"\n      uid=1_50 StaticText \"対象期間の終了\"\n      uid=1_51 Date \"対象期間の終了\" value=\"2026-09-13\"\n        uid=1_52 spinbutton \"年 年\" value=\"2026\" valuemax=\"2026\" valuemin=\"2026\" valuetext=\"\"\n        uid=1_53 StaticText \"/\"\n        uid=1_54 spinbutton \"月 月\" value=\"9\" valuemax=\"9\" valuemin=\"6\" valuetext=\"\"\n        uid=1_55 StaticText \"/\"\n        uid=1_56 spinbutton \"日 日\" value=\"13\" valuemax=\"31\" valuemin=\"1\" valuetext=\"\"\n        uid=1_57 button \"日付選択ツールを表示 日付選択ツールを表示\" haspopup=\"menu\"\n      uid=1_58 StaticText \"指標\"\n      uid=1_59 combobox \"指標\" expandable haspopup=\"menu\" value=\"売上（税抜・純額）\"\n        uid=1_60 option \"売上（税抜・純額）\" selectable selected value=\"売上（税抜・純額）\"\n        uid=1_61 option \"粗利額\" selectable value=\"粗利額\"\n        uid=1_62 option \"販売数量\" selectable value=\"販売数量\"\n        uid=1_63 option \"粗利率\" selectable value=\"粗利率\"\n        uid=1_64 option \"平均販売単価\" selectable value=\"平均販売単価\"\n      uid=1_65 StaticText \"集計単位\"\n      uid=1_66 combobox \"集計単位\" expandable haspopup=\"menu\" value=\"店舗別\"\n        uid=1_67 option \"店舗別\" selectable selected value=\"店舗別\"\n        uid=1_68 option \"カテゴリ別\" selectable value=\"カテゴリ別\"\n        uid=1_69 option \"商品別\" selectable value=\"商品別\"\n      uid=1_70 StaticText \"カテゴリ\"\n      uid=1_71 combobox \"カテゴリ\" expandable haspopup=\"menu\" value=\"すべて\"\n        uid=1_72 option \"すべて\" selectable selected value=\"すべて\"\n        uid=1_73 option \"飲料\" selectable value=\"飲料\"\n        uid=1_74 option \"食品\" selectable value=\"食品\"\n        uid=1_75 option \"日用品\" selectable value=\"日用品\"\n        uid=1_76 option \"菓子\" selectable value=\"菓子\"\n        uid=1_77 option \"冷凍食品\" selectable value=\"冷凍食品\"\n        uid=1_78 option \"雑貨\" selectable value=\"雑貨\"\n      uid=1_79 StaticText \"商品\"\n      uid=1_80 combobox \"商品\" expandable haspopup=\"menu\" value=\"すべて\"\n        uid=1_81 option \"すべて\" selectable selected value=\"すべて\"\n        uid=1_82 option \"飲料・商品1\" selectable value=\"飲料・商品1\"\n        uid=1_83 option \"飲料・商品2\" selectable value=\"飲料・商品2\"\n        uid=1_84 option \"食品・商品1\" selectable value=\"食品・商品1\"\n        uid=1_85 option \"食品・商品2\" selectable value=\"食品・商品2\"\n        uid=1_86 option \"日用品・商品1\" selectable value=\"日用品・商品1\"\n        uid=1_87 option \"日用品・商品2\" selectable value=\"日用品・商品2\"\n        uid=1_88 option \"菓子・商品1\" selectable value=\"菓子・商品1\"\n        uid=1_89 option \"菓子・商品2\" selectable value=\"菓子・商品2\"\n        uid=1_90 option \"冷凍食品・商品1\" selectable value=\"冷凍食品・商品1\"\n        uid=1_91 option \"冷凍食品・商品2\" selectable value=\"冷凍食品・商品2\"\n        uid=1_92 option \"雑貨・商品1\" selectable value=\"雑貨・商品1\"\n        uid=1_93 option \"雑貨・商品2\" selectable value=\"雑貨・商品2\"\n      uid=1_94 button \"比較する\"\n      uid=1_95 button \"対象期間だけ集計\"\n      uid=1_96 button \"中止\" disableable disabled\n      uid=1_97 button \"ひとつ前に戻す\"\n    uid=1_98 status atomic live=\"polite\" relevant=\"additions text\"\n      uid=1_99 StaticText \"集計しました。\"\n    uid=1_100 region \"集計結果\"\n      uid=1_101 heading \"集計結果\" level=\"2\"\n      uid=1_102 button \"下書きにまとめる\"\n      uid=1_103 StaticText \"売上 · 全10店舗 · 店舗別\n2026-08-31〜2026-09-06 → 2026-09-07〜2026-09-13\"\n      uid=1_104 StaticText \"比較期間（円）\"\n      uid=1_105 StaticText \"100,000,000\"\n      uid=1_106 StaticText \"対象期間（円）\"\n      uid=1_107 StaticText \"98,000,000\"\n      uid=1_108 StaticText \"増減（円）\"\n      uid=1_109 StaticText \"-2,000,000\"\n      uid=1_110 StaticText \"減少 2.00%\"\n      uid=1_111 StaticText \"比較期間からの増減（円）\"\n      uid=1_112 StaticText \"S03\"\n      uid=1_113 StaticText \"-1,600,000\"\n      uid=1_114 StaticText \"S01\"\n      uid=1_115 StaticText \"-700,000\"\n      uid=1_116 StaticText \"S04\"\n      uid=1_117 StaticText \"0\"\n      uid=1_118 StaticText \"S05\"\n      uid=1_119 StaticText \"0\"\n      uid=1_120 StaticText \"S06\"\n      uid=1_121 StaticText \"0\"\n      uid=1_122 StaticText \"S07\"\n      uid=1_123 StaticText \"0\"\n      uid=1_124 StaticText \"S08\"\n      uid=1_125 StaticText \"0\"\n      uid=1_126 StaticText \"S09\"\n      uid=1_127 StaticText \"0\"\n      uid=1_128 StaticText \"S10\"\n      uid=1_129 StaticText \"0\"\n      uid=1_130 StaticText \"S02\"\n      uid=1_131 StaticText \"+300,000\"\n      uid=1_132 generic \"集計結果の表\"\n        uid=1_133 StaticText \"対象\"\n        uid=1_134 StaticText \"比較期間\"\n        uid=1_135 StaticText \"対象期間\"\n        uid=1_136 StaticText \"増減\"\n        uid=1_137 StaticText \"増減率\"\n        uid=1_138 StaticText \"S03\"\n        uid=1_139 StaticText \"8,000,000\"\n        uid=1_140 StaticText \"6,400,000\"\n        uid=1_141 StaticText \"-1,600,000\"\n        uid=1_142 StaticText \"-20.00%\"\n        uid=1_143 StaticText \"S01\"\n        uid=1_144 StaticText \"12,000,000\"\n        uid=1_145 StaticText \"11,300,000\"\n        uid=1_146 StaticText \"-700,000\"\n        uid=1_147 StaticText \"-5.83%\"\n        uid=1_148 StaticText \"S04\"\n        uid=1_149 StaticText \"10,000,000\"\n        uid=1_150 StaticText \"10,000,000\"\n        uid=1_151 StaticText \"0\"\n        uid=1_152 StaticText \"0.00%\"\n        uid=1_153 StaticText \"S05\"\n        uid=1_154 StaticText \"10,000,000\"\n        uid=1_155 StaticText \"10,000,000\"\n        uid=1_156 StaticText \"0\"\n        uid=1_157 StaticText \"0.00%\"\n        uid=1_158 StaticText \"S06\"\n        uid=1_159 StaticText \"10,000,000\"\n        uid=1_160 StaticText \"10,000,000\"\n        uid=1_161 StaticText \"0\"\n        uid=1_162 StaticText \"0.00%\"\n        uid=1_163 StaticText \"S07\"\n        uid=1_164 StaticText \"10,000,000\"\n        uid=1_165 StaticText \"10,000,000\"\n        uid=1_166 StaticText \"0\"\n        uid=1_167 StaticText \"0.00%\"\n        uid=1_168 StaticText \"S08\"\n        uid=1_169 StaticText \"10,000,000\"\n        uid=1_170 StaticText \"10,000,000\"\n        uid=1_171 StaticText \"0\"\n        uid=1_172 StaticText \"0.00%\"\n        uid=1_173 StaticText \"S09\"\n        uid=1_174 StaticText \"10,000,000\"\n        uid=1_175 StaticText \"10,000,000\"\n        uid=1_176 StaticText \"0\"\n        uid=1_177 StaticText \"0.00%\"\n        uid=1_178 StaticText \"S10\"\n        uid=1_179 StaticText \"8,000,000\"\n        uid=1_180 StaticText \"8,000,000\"\n        uid=1_181 StaticText \"0\"\n        uid=1_182 StaticText \"0.00%\"\n        uid=1_183 StaticText \"S02\"\n        uid=1_184 StaticText \"12,000,000\"\n        uid=1_185 StaticText \"12,300,000\"\n        uid=1_186 StaticText \"+300,000\"\n        uid=1_187 StaticText \"2.50%\"\n      uid=1_188 StaticText \"増減の内訳から、原因までは判断できません。\"\n    uid=1_189 region \"下書き\"\n      uid=1_190 heading \"下書き\" level=\"2\"\n      uid=1_191 StaticText \"このページを閉じると消えます\"\n      uid=1_192 StaticText \"集計結果から、編集できるメモを作れます。\"\n    uid=1_193 DisclosureTriangle \"開発者向けの検証\" expandable\n"
+      ]
+    }
+  ]
+}

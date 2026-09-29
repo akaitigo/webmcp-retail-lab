@@ -71,16 +71,15 @@ WebMCPのツールは、ページの既存のログイン状態を利用する�
 
 ## CLIから利用できるか
 
-**今回のCodex CLI＋Chrome拡張連携では、WebMCPツールを検出できませんでした。** CLI 0.153.4での試験と、利用者が実施した0.158.0での再検証で確認しています。ページへの接続・DOMの読み取りはできましたが、タブに`webmcp` capabilityがなく、ツールの呼び出しには進めませんでした。
+**公式Chrome DevTools MCPを接続したCodex CLI 0.158.0で、WebMCPツールの検出・条件取得・売上比較・同じページへの表示に成功しました。** アプリの変更や独自ブリッジは不要でした。[起動コマンド・プロンプト・実録GIF](docs/cli-webmcp.md)
 
 | 接続経路 | 確認結果 |
 |---|---|
 | Codexデスクトップ → 内蔵ブラウザのSite tools | ツールの検出・呼び出し・画面反映に成功 |
-| Codex CLI → Chrome拡張連携 | ページ接続は成功。WebMCPツールは検出できず |
+| Codex CLI → Chrome拡張連携（先行試験） | ページ接続は成功。WebMCPツールは検出できず |
+| Codex CLI → 公式Chrome DevTools MCP → 検証用Chrome | ツールの検出・3種類のページツール実行・画面反映に成功 |
 
-通常のMCPサーバーに接続できることと、ブラウザ内のWebMCPツールを利用できることは別です。この結果だけで「Codex CLIがWebMCP仕様に違反している」「アプリのWebMCP実装が壊れている」とは判断できません。今回確認した不足箇所は、CLIで利用したブラウザ連携がWebMCPの検出・実行機能を公開していない点です。
-
-CLIから呼ぶためにMCPブリッジを追加する案はありますが、このリポジトリでは未実装・未検証です。掲載した実録GIFはデスクトップ版での実行です。[検証の詳細と仕様上の位置づけ](docs/verification.md#codex-cliでの検証)
+CLI側には通常のMCPサーバーとして接続し、`list_webmcp_tools`と`execute_webmcp_tool`を通してページのWebMCPを使います。これは開発・デバッグ用の経路で、CLI単体が任意のブラウザへ自動接続する機能ではありません。先行試験の失敗をCLI全体の非対応とは扱いません。[検証記録](docs/verification.md#codex-cliでの検証)
 
 ## 動作例
 

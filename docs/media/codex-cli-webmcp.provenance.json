@@ -1,0 +1,23 @@
+{
+  "source": "Actual interactive Codex CLI PTY recording (asciicast v2), not an OS screen video",
+  "source_sha256": "522f0cdf6febc5ea775d5dba6403fd68b3733e9cbe1c4480b088d17655419b1d",
+  "source_interval_seconds": [
+    40,
+    116
+  ],
+  "sampling_interval_seconds": 0.5,
+  "playback_speed": 1,
+  "terminal_columns_rows": [
+    120,
+    36
+  ],
+  "gif_dimensions": [
+    1344,
+    816
+  ],
+  "rendering": "ANSI output replayed through pyte; Pillow renders actual terminal cells in a uniform color with Japanese font fallback. Original colors are not preserved.",
+  "redactions": "Entire rows containing personal absolute paths or ~/Downloads/ are blanked. No replacement conversation or tool output.",
+  "gif_sha256": "771c2ed0a0d980eafb69908444be319d3199301f3933ec424f32ed7ee9d64495",
+  "note": "The clip covers discovery, three native WebMCP calls and rendered-page snapshot. Later screenshot file-write failures are outside the clip and documented separately.",
+  "gif_duration_seconds": 76.5
+}
