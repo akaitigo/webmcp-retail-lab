@@ -1,0 +1,41 @@
+{
+  "source_sha256": "2b6db7fddf2f997d9184179c41d8a107db15165cab0a1ab0365c58683aa44a81",
+  "source_duration_seconds": 207.29,
+  "source_dimensions": [
+    3024,
+    1964
+  ],
+  "trim_start_seconds": 135.0,
+  "trim_duration_seconds": 72.0,
+  "max_width_pixels": 1518,
+  "fps": 8,
+  "playback_speed": 1,
+  "audio": "omitted: GIF has no audio",
+  "edits": [
+    "crop: exclude unrelated sidebar and terminal",
+    "trim",
+    "resize without upscaling",
+    "frame-rate conversion",
+    "GIF palette quantization"
+  ],
+  "gif_sha256": "32a408b1fb930441e6a4a45790cbd44dacd1c142b8205e02e0c6f1fca1927d84",
+  "verification_note": "Reviewed first, intermediate and final GIF frames against the real recording. Live calls and rendered DOM were separately checked in the recorded Codex session.",
+  "crop_requested_width_height_x_y": [
+    2530,
+    935,
+    490,
+    150
+  ],
+  "crop_effective_width_height_x_y": [
+    2530,
+    934,
+    490,
+    150
+  ],
+  "crop_note": "FFmpeg aligns crop height to the even pixel boundary of the source yuv420p stream.",
+  "gif_dimensions": [
+    1518,
+    560
+  ],
+  "gif_duration_seconds": 72.0
+}

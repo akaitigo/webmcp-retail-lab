@@ -37,6 +37,16 @@ WebMCPが利用できないブラウザでも、通常の画面操作は使え�
 
 ## 動作例
 
+### Codexの実セッション
+
+![CodexがWebMCPツールを呼び、同じ画面へ結果を返す実録](docs/media/codex-live-session.gif)
+
+利用者が録画した、実際のCodexの会話と内蔵ブラウザです。ページのツールを検出し、画面条件を取得、全店の週次売上を比較、S03をカテゴリ別に集計して同じ画面へ表示しています。途中のセッション期限切れと、再読み込み後の再実行も収録しています。
+
+元動画の2分15秒から72秒間を等速で抜粋。別の会話名が映るサイドバーと下部ターミナルを切り取り、縮小・8fps化しました。会話やツールの応答は合成していません。[収録範囲と確認結果](docs/verification.md#codex実セッションの録画) · [編集記録](docs/media/codex-live-session.provenance.json)
+
+### スクリプトによる自動再現
+
 ![WebMCPの操作デモ](docs/media/demo.gif)
 
 このGIFは、同梱スクリプトがChromeのネイティブ`document.modelContext`を呼んで収録した自動再現です。Codexの会話を録画したものではありません。
