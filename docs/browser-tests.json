@@ -1,0 +1,104 @@
+{
+  "browser": "154.0.8037.58",
+  "native": true,
+  "transport": "chrome154-json",
+  "tests": [
+    {
+      "name": "real HTTP ordinary UI golden totals",
+      "status": "PASS",
+      "ms": 1056
+    },
+    {
+      "name": "UI and shared handler parity (not native)",
+      "status": "PASS",
+      "ms": 9
+    },
+    {
+      "name": "UI change during pending presentation preserves gross profit",
+      "status": "PASS",
+      "ms": 3722
+    },
+    {
+      "name": "UI cancel prevents presentation",
+      "status": "PASS",
+      "ms": 141
+    },
+    {
+      "name": "undo increments version",
+      "status": "PASS",
+      "ms": 134
+    },
+    {
+      "name": "draft edit is preserved and treated as text",
+      "status": "PASS",
+      "ms": 190
+    },
+    {
+      "name": "monthly S03 product totals",
+      "status": "PASS",
+      "ms": 133
+    },
+    {
+      "name": "mobile width",
+      "status": "PASS",
+      "ms": 245
+    },
+    {
+      "name": "no uncaught JS exceptions",
+      "status": "PASS",
+      "ms": 0
+    },
+    {
+      "name": "native discovery exactly five tools",
+      "status": "PASS"
+    },
+    {
+      "name": "native compare and present golden totals",
+      "status": "PASS"
+    },
+    {
+      "name": "native query metrics",
+      "status": "PASS"
+    },
+    {
+      "name": "native draft idempotency and prior UI edits preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "native stale result refuses old AND substituted new version",
+      "status": "PASS"
+    },
+    {
+      "name": "native async reauthorization race refuses UI overwrite",
+      "status": "PASS"
+    },
+    {
+      "name": "native invalid arguments and missing period are rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "native restricted session denies S03 and other session result",
+      "status": "PASS"
+    },
+    {
+      "name": "native console explicitly selected transport tracks context and result",
+      "status": "PASS"
+    },
+    {
+      "name": "S03 profit displays decrease and readable draft",
+      "status": "PASS"
+    },
+    {
+      "name": "native conflict has actionable recovery; rereads actual conditions",
+      "status": "PASS"
+    },
+    {
+      "name": "ratio difference is in percentage points",
+      "status": "PASS"
+    },
+    {
+      "name": "positive and zero differences are not labeled decreases",
+      "status": "PASS"
+    }
+  ]
+}

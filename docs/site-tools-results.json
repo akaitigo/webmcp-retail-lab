@@ -1,0 +1,590 @@
+{
+  "provenance": "Actual Codex in-app browser WebMCP calls, 2026-09-29. Opaque page IDs pseudonymized consistently.",
+  "results": {
+    "context": {
+      "allowed_store_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "base_period": {
+        "end": "2026-09-06",
+        "start": "2026-08-31"
+      },
+      "business_as_of": "2026-09-18",
+      "categories": {
+        "C01": "飲料",
+        "C02": "食品",
+        "C03": "日用品",
+        "C04": "菓子",
+        "C05": "冷凍食品",
+        "C06": "雑貨"
+      },
+      "context_id": "ctx_example_1",
+      "current_result_id": null,
+      "data_through": "2026-09-13",
+      "dataset_snapshot_id": "synthetic-retail-20260913-v1",
+      "filters": {
+        "category_ids": [],
+        "product_ids": [],
+        "store_ids": [
+          "S01",
+          "S02",
+          "S03",
+          "S04",
+          "S05",
+          "S06",
+          "S07",
+          "S08",
+          "S09",
+          "S10"
+        ]
+      },
+      "group_by": "store",
+      "metric": "net_sales",
+      "metrics": {
+        "avg_unit_price": "円/点",
+        "gross_margin": "比率",
+        "gross_profit": "円",
+        "net_sales": "円",
+        "units": "点"
+      },
+      "products": {
+        "C01-P1": {
+          "category_id": "C01",
+          "name": "飲料・商品1"
+        },
+        "C01-P2": {
+          "category_id": "C01",
+          "name": "飲料・商品2"
+        },
+        "C02-P1": {
+          "category_id": "C02",
+          "name": "食品・商品1"
+        },
+        "C02-P2": {
+          "category_id": "C02",
+          "name": "食品・商品2"
+        },
+        "C03-P1": {
+          "category_id": "C03",
+          "name": "日用品・商品1"
+        },
+        "C03-P2": {
+          "category_id": "C03",
+          "name": "日用品・商品2"
+        },
+        "C04-P1": {
+          "category_id": "C04",
+          "name": "菓子・商品1"
+        },
+        "C04-P2": {
+          "category_id": "C04",
+          "name": "菓子・商品2"
+        },
+        "C05-P1": {
+          "category_id": "C05",
+          "name": "冷凍食品・商品1"
+        },
+        "C05-P2": {
+          "category_id": "C05",
+          "name": "冷凍食品・商品2"
+        },
+        "C06-P1": {
+          "category_id": "C06",
+          "name": "雑貨・商品1"
+        },
+        "C06-P2": {
+          "category_id": "C06",
+          "name": "雑貨・商品2"
+        }
+      },
+      "target_period": {
+        "end": "2026-09-13",
+        "start": "2026-09-07"
+      },
+      "view_version": 1
+    },
+    "weekly": {
+      "data_through": "2026-09-13",
+      "dataset_snapshot_id": "synthetic-retail-20260913-v1",
+      "duration_ms": 0.972,
+      "metric_definition_version": "retail-metrics-v1",
+      "ok": true,
+      "other_totals": null,
+      "query": {
+        "base_period": {
+          "end": "2026-09-06",
+          "start": "2026-08-31"
+        },
+        "context_id": "ctx_example_1",
+        "filters": {
+          "category_ids": [],
+          "product_ids": [],
+          "store_ids": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S10"
+          ]
+        },
+        "group_by": "store",
+        "kind": "compare",
+        "limit": 100,
+        "metric": "net_sales",
+        "target_period": {
+          "end": "2026-09-13",
+          "start": "2026-09-07"
+        }
+      },
+      "query_hash": "63c9604c67dc95e32bc03fde",
+      "result_id": "r_example_2",
+      "row_count": 10,
+      "rows": [
+        {
+          "base": 8000000,
+          "change_rate": -0.2,
+          "delta": -1600000,
+          "id": "S03",
+          "label": "S03",
+          "net_delta_share": 0.8,
+          "target": 6400000
+        },
+        {
+          "base": 12000000,
+          "change_rate": -0.058333333333333334,
+          "delta": -700000,
+          "id": "S01",
+          "label": "S01",
+          "net_delta_share": 0.35,
+          "target": 11300000
+        },
+        {
+          "base": 10000000,
+          "change_rate": 0,
+          "delta": 0,
+          "id": "S04",
+          "label": "S04",
+          "net_delta_share": 0,
+          "target": 10000000
+        },
+        {
+          "base": 10000000,
+          "change_rate": 0,
+          "delta": 0,
+          "id": "S05",
+          "label": "S05",
+          "net_delta_share": 0,
+          "target": 10000000
+        },
+        {
+          "base": 10000000,
+          "change_rate": 0,
+          "delta": 0,
+          "id": "S06",
+          "label": "S06",
+          "net_delta_share": 0,
+          "target": 10000000
+        },
+        {
+          "base": 10000000,
+          "change_rate": 0,
+          "delta": 0,
+          "id": "S07",
+          "label": "S07",
+          "net_delta_share": 0,
+          "target": 10000000
+        },
+        {
+          "base": 10000000,
+          "change_rate": 0,
+          "delta": 0,
+          "id": "S08",
+          "label": "S08",
+          "net_delta_share": 0,
+          "target": 10000000
+        },
+        {
+          "base": 10000000,
+          "change_rate": 0,
+          "delta": 0,
+          "id": "S09",
+          "label": "S09",
+          "net_delta_share": 0,
+          "target": 10000000
+        },
+        {
+          "base": 8000000,
+          "change_rate": 0,
+          "delta": 0,
+          "id": "S10",
+          "label": "S10",
+          "net_delta_share": 0,
+          "target": 8000000
+        },
+        {
+          "base": 12000000,
+          "change_rate": 0.025,
+          "delta": 300000,
+          "id": "S02",
+          "label": "S02",
+          "net_delta_share": -0.15,
+          "target": 12300000
+        }
+      ],
+      "timezone": "Asia/Tokyo",
+      "totals": {
+        "base": 100000000,
+        "change_rate": -0.02,
+        "delta": -2000000,
+        "target": 98000000
+      },
+      "truncated": false,
+      "unit": "円",
+      "warnings": [
+        "差分寄与は構成上の内訳であり、原因の証明ではありません。"
+      ]
+    },
+    "category": {
+      "data_through": "2026-09-13",
+      "dataset_snapshot_id": "synthetic-retail-20260913-v1",
+      "duration_ms": 0.308,
+      "metric_definition_version": "retail-metrics-v1",
+      "ok": true,
+      "other_totals": null,
+      "query": {
+        "base_period": {
+          "end": "2026-09-06",
+          "start": "2026-08-31"
+        },
+        "context_id": "ctx_example_3",
+        "filters": {
+          "category_ids": [],
+          "product_ids": [],
+          "store_ids": [
+            "S03"
+          ]
+        },
+        "group_by": "category",
+        "kind": "compare",
+        "limit": 100,
+        "metric": "net_sales",
+        "target_period": {
+          "end": "2026-09-13",
+          "start": "2026-09-07"
+        }
+      },
+      "query_hash": "21ccdc9b0bb16c528a42b037",
+      "result_id": "r_example_4",
+      "row_count": 6,
+      "rows": [
+        {
+          "base": 3000000,
+          "change_rate": -0.4,
+          "delta": -1200000,
+          "id": "C01",
+          "label": "飲料",
+          "net_delta_share": 0.75,
+          "target": 1800000
+        },
+        {
+          "base": 1000000,
+          "change_rate": -0.08,
+          "delta": -80000,
+          "id": "C02",
+          "label": "食品",
+          "net_delta_share": 0.05,
+          "target": 920000
+        },
+        {
+          "base": 1000000,
+          "change_rate": -0.08,
+          "delta": -80000,
+          "id": "C03",
+          "label": "日用品",
+          "net_delta_share": 0.05,
+          "target": 920000
+        },
+        {
+          "base": 1000000,
+          "change_rate": -0.08,
+          "delta": -80000,
+          "id": "C04",
+          "label": "菓子",
+          "net_delta_share": 0.05,
+          "target": 920000
+        },
+        {
+          "base": 1000000,
+          "change_rate": -0.08,
+          "delta": -80000,
+          "id": "C05",
+          "label": "冷凍食品",
+          "net_delta_share": 0.05,
+          "target": 920000
+        },
+        {
+          "base": 1000000,
+          "change_rate": -0.08,
+          "delta": -80000,
+          "id": "C06",
+          "label": "雑貨",
+          "net_delta_share": 0.05,
+          "target": 920000
+        }
+      ],
+      "timezone": "Asia/Tokyo",
+      "totals": {
+        "base": 8000000,
+        "change_rate": -0.2,
+        "delta": -1600000,
+        "target": 6400000
+      },
+      "truncated": false,
+      "unit": "円",
+      "warnings": [
+        "差分寄与は構成上の内訳であり、原因の証明ではありません。"
+      ]
+    },
+    "units": {
+      "data_through": "2026-09-13",
+      "dataset_snapshot_id": "synthetic-retail-20260913-v1",
+      "duration_ms": 0.12,
+      "metric_definition_version": "retail-metrics-v1",
+      "ok": true,
+      "other_totals": null,
+      "query": {
+        "context_id": "ctx_example_3",
+        "filters": {
+          "category_ids": [
+            "C01"
+          ],
+          "product_ids": [],
+          "store_ids": [
+            "S03"
+          ]
+        },
+        "group_by": "category",
+        "kind": "query",
+        "limit": 100,
+        "metric": "units",
+        "target_period": {
+          "end": "2026-09-13",
+          "start": "2026-09-07"
+        }
+      },
+      "query_hash": "f96db91c9bf63c36c729e54a",
+      "result_id": "r_example_5",
+      "row_count": 1,
+      "rows": [
+        {
+          "id": "C01",
+          "label": "飲料",
+          "value": 8000
+        }
+      ],
+      "timezone": "Asia/Tokyo",
+      "totals": {
+        "value": 8000
+      },
+      "truncated": false,
+      "unit": "点",
+      "warnings": []
+    },
+    "draft": {
+      "draft_id": "d_example_6",
+      "ok": true,
+      "reused": false,
+      "saved": false
+    },
+    "draftAgain": {
+      "draft_id": "d_example_6",
+      "ok": true,
+      "reused": true,
+      "saved": false
+    },
+    "stale": {
+      "error": {
+        "code": "VIEW_CHANGED",
+        "message": "人または別の操作が画面を変更しました。古い結果は表示しません。条件を再取得して再集計してください。"
+      },
+      "ok": false
+    },
+    "fresh": {
+      "allowed_store_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "base_period": {
+        "end": "2026-09-06",
+        "start": "2026-08-31"
+      },
+      "business_as_of": "2026-09-18",
+      "categories": {
+        "C01": "飲料",
+        "C02": "食品",
+        "C03": "日用品",
+        "C04": "菓子",
+        "C05": "冷凍食品",
+        "C06": "雑貨"
+      },
+      "context_id": "ctx_example_7",
+      "current_result_id": null,
+      "data_through": "2026-09-13",
+      "dataset_snapshot_id": "synthetic-retail-20260913-v1",
+      "filters": {
+        "category_ids": [],
+        "product_ids": [],
+        "store_ids": [
+          "S03"
+        ]
+      },
+      "group_by": "store",
+      "metric": "gross_profit",
+      "metrics": {
+        "avg_unit_price": "円/点",
+        "gross_margin": "比率",
+        "gross_profit": "円",
+        "net_sales": "円",
+        "units": "点"
+      },
+      "products": {
+        "C01-P1": {
+          "category_id": "C01",
+          "name": "飲料・商品1"
+        },
+        "C01-P2": {
+          "category_id": "C01",
+          "name": "飲料・商品2"
+        },
+        "C02-P1": {
+          "category_id": "C02",
+          "name": "食品・商品1"
+        },
+        "C02-P2": {
+          "category_id": "C02",
+          "name": "食品・商品2"
+        },
+        "C03-P1": {
+          "category_id": "C03",
+          "name": "日用品・商品1"
+        },
+        "C03-P2": {
+          "category_id": "C03",
+          "name": "日用品・商品2"
+        },
+        "C04-P1": {
+          "category_id": "C04",
+          "name": "菓子・商品1"
+        },
+        "C04-P2": {
+          "category_id": "C04",
+          "name": "菓子・商品2"
+        },
+        "C05-P1": {
+          "category_id": "C05",
+          "name": "冷凍食品・商品1"
+        },
+        "C05-P2": {
+          "category_id": "C05",
+          "name": "冷凍食品・商品2"
+        },
+        "C06-P1": {
+          "category_id": "C06",
+          "name": "雑貨・商品1"
+        },
+        "C06-P2": {
+          "category_id": "C06",
+          "name": "雑貨・商品2"
+        }
+      },
+      "target_period": {
+        "end": "2026-09-13",
+        "start": "2026-09-07"
+      },
+      "view_version": 4
+    },
+    "profit": {
+      "data_through": "2026-09-13",
+      "dataset_snapshot_id": "synthetic-retail-20260913-v1",
+      "duration_ms": 0.268,
+      "metric_definition_version": "retail-metrics-v1",
+      "ok": true,
+      "other_totals": null,
+      "query": {
+        "base_period": {
+          "end": "2026-09-06",
+          "start": "2026-08-31"
+        },
+        "context_id": "ctx_example_7",
+        "filters": {
+          "category_ids": [],
+          "product_ids": [],
+          "store_ids": [
+            "S03"
+          ]
+        },
+        "group_by": "store",
+        "kind": "compare",
+        "limit": 100,
+        "metric": "gross_profit",
+        "target_period": {
+          "end": "2026-09-13",
+          "start": "2026-09-07"
+        }
+      },
+      "query_hash": "6b2ebe642f10a86514177909",
+      "result_id": "r_example_8",
+      "row_count": 1,
+      "rows": [
+        {
+          "base": 2400000,
+          "change_rate": -0.26,
+          "delta": -624000,
+          "id": "S03",
+          "label": "S03",
+          "net_delta_share": 1,
+          "target": 1776000
+        }
+      ],
+      "timezone": "Asia/Tokyo",
+      "totals": {
+        "base": 2400000,
+        "change_rate": -0.26,
+        "delta": -624000,
+        "target": 1776000
+      },
+      "truncated": false,
+      "unit": "円",
+      "warnings": [
+        "差分寄与は構成上の内訳であり、原因の証明ではありません。"
+      ]
+    },
+    "presented": {
+      "ok": true,
+      "result_id": "r_example_8",
+      "view_version": 5
+    }
+  }
+}

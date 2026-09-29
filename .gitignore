@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+artifacts/
+# Private working records retained locally; publish curated docs only.
+evidence/
+reviews/
+docs/AGENT_HANDOFF.md
+docs/LOCAL_VALIDATION_20260929.md
+docs/RESULTS.md
+docs/UI_CHANGES_20260929.md
+docs/VALIDATION.md
+# Historical harnesses superseded by tests/browser/*.mjs.
+tests/browser_smoke.py
+tests/render_smoke.py

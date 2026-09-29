@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>売上分析 | Retail Insight</title><link rel="stylesheet" href="/style.css"><script type="module" src="/dist/main.js"></script></head>
+<body>
+<header><div class="header-inner"><div><span class="brand">Retail Insight</span><h1>売上分析</h1></div><a id="draft-link" href="#draft-section">下書き 0件</a></div></header>
+<main>
+<div class="page-meta"><span>サンプルデータ · 2026年6月16日〜9月13日</span><span id="activity" role="status" aria-live="polite">待機中</span></div>
+<section class="panel" aria-labelledby="filter-heading"><div class="section-head"><h2 id="filter-heading">集計条件</h2><div class="actions presets"><button id="weekly" type="button">8/31〜9/13の週次比較</button><button id="monthly" type="button">7月と8月を比較</button></div></div>
+<div class="filters">
+<label>店舗<select id="stores" multiple size="5" aria-label="対象店舗"></select><small>複数選択可</small></label>
+<div class="filter-fields">
+<label>比較期間の開始<input id="base-start" type="date" min="2026-06-16" max="2026-09-13"></label><label>比較期間の終了<input id="base-end" type="date" min="2026-06-16" max="2026-09-13"></label>
+<label>対象期間の開始<input id="target-start" type="date" min="2026-06-16" max="2026-09-13"></label><label>対象期間の終了<input id="target-end" type="date" min="2026-06-16" max="2026-09-13"></label>
+<label>指標<select id="metric"><option value="net_sales">売上（税抜・純額）</option><option value="gross_profit">粗利額</option><option value="units">販売数量</option><option value="gross_margin">粗利率</option><option value="avg_unit_price">平均販売単価</option></select></label>
+<label>集計単位<select id="group"><option value="store">店舗別</option><option value="category">カテゴリ別</option><option value="product">商品別</option></select></label>
+<label>カテゴリ<select id="category"><option value="">すべて</option></select></label><label>商品<select id="product"><option value="">すべて</option></select></label>
+</div></div>
+<div class="actions main-actions"><button id="compare" class="primary" type="button">比較する</button><button id="query" type="button">対象期間だけ集計</button><button id="cancel" type="button" disabled>中止</button><button id="undo" class="quiet" type="button">ひとつ前に戻す</button></div>
+</section>
+<div class="notice-row"><p id="notice" role="status" aria-live="polite">読み込み中…</p><button id="retry" type="button" hidden>現在の条件で再分析</button></div>
+<section class="panel results" aria-labelledby="result-heading"><div class="section-head"><h2 id="result-heading">集計結果</h2><button id="create-draft" type="button" disabled>下書きにまとめる</button></div>
+<p id="result-provenance" class="muted"></p><div class="kpis" id="kpis"></div>
+<div class="result-layout"><figure><figcaption id="chart-title"></figcaption><div id="chart"></div></figure><div id="table-wrap" tabindex="0" aria-label="集計結果の表"></div></div><p id="warnings" class="warning"></p>
+</section>
+<section class="panel" id="draft-section" aria-labelledby="draft-heading"><div class="section-head"><h2 id="draft-heading">下書き</h2><span class="muted">このページを閉じると消えます</span></div><div id="drafts"><p id="draft-empty" class="muted">集計結果から、編集できるメモを作れます。</p></div></section>
+<details class="panel diagnostics"><summary>開発者向けの検証</summary>
+<div class="diagnostic-meta"><p>WebMCP：<strong id="capability">確認中</strong><br><small id="capability-detail"></small></p><p>画面の版：<span id="view-version">1</span>（競合検出用）</p></div>
+<p class="muted">合成データを使用しています。AIに接続すると、ツールの返却値が接続先に渡ります。登録・直接呼び出しの成功と、AIによる一連の操作の成功は別に確認してください。</p>
+<button id="race" type="button">競合テスト：3秒後に表示</button>
+<details><summary>結果の参照情報</summary><pre id="result-detail">未実行</pre></details>
+<p>直接実行は共通処理のテストです。ネイティブ実行はブラウザの <code>document.modelContext</code> を使います。</p>
+<div class="actions"><label>ツール<select id="tool-select"></select></label><button id="sample-input" type="button">入力例</button></div>
+<label>引数（JSON）<textarea id="tool-input" rows="6" spellcheck="false">{}</textarea></label>
+<label>ネイティブAPIの引数形式<select id="native-transport"><option value="object">オブジェクト</option><option value="chrome154-json">Chrome 154互換：JSON文字列</option></select></label>
+<div class="actions"><button id="local-run" type="button">直接実行</button><button id="native-list" type="button">登録ツールを確認</button><button id="native-run" type="button">ネイティブ実行</button></div><pre id="tool-output" tabindex="0">未実行</pre>
+<details><summary>操作ログ</summary><pre id="trace" tabindex="0">[]</pre></details>
+<p class="muted">検証用サンプル · 本番の認証・監査には未対応</p>
+</details>
+</main></body></html>
