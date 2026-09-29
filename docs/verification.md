@@ -60,3 +60,5 @@ Chrome 154でオブジェクト入力が失敗した事実は残す。`chrome154
 ## CI環境の調整
 
 初回のUbuntu CIでは型検査・ビルド・単体テストまで通った後、Chromiumが`No usable sandbox`で起動できなかった。[初回の実行](https://github.com/akaitigo/webmcp-retail-lab/actions/runs/36511897308)。ブラウザ検証をmacOSランナーへ移し、sandbox有効と同じ9件のUIチェックを維持した。CIではネイティブWebMCPやCodexの実呼び出しは行わない。
+
+macOS初回はサーバー起動の15秒上限に達した。単体テストにも35.7秒かかる環境だったため、起動待ちを60秒へ変更し、標準出力が分割されても起動URLを検出できるようにした。結果の数値・競合・画面の合否条件は変更していない。[該当実行](https://github.com/akaitigo/webmcp-retail-lab/actions/runs/36512021228)。

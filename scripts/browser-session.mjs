@@ -6,11 +6,13 @@ export async function startLab({native = false} = {}) {
   const start = (scope) => new Promise((resolve, reject) => {
     const child = spawn(process.env.PYTHON || 'python3', ['server.py', '--port', '0', '--scope', scope], {stdio: ['ignore', 'pipe', 'inherit']});
     servers.push(child);
-    const timeout = setTimeout(() => reject(new Error('Server startup timed out')), 15000);
+    let output = '';
+    const timeout = setTimeout(() => reject(new Error('Server did not report its listening URL within 60 seconds')), 60000);
     child.on('error', e => {clearTimeout(timeout); reject(e);});
-    child.on('exit', code => {clearTimeout(timeout); if (code) reject(new Error(`Server exited: ${code}`));});
+    child.on('exit', code => {clearTimeout(timeout); reject(new Error(`Server exited before startup completed: ${code}`));});
     child.stdout.on('data', chunk => {
-      const url = String(chunk).match(/http:\/\/127\.0\.0\.1:\d+/)?.[0];
+      output += String(chunk);
+      const url = output.match(/http:\/\/127\.0\.0\.1:\d+/)?.[0];
       if (url) {clearTimeout(timeout); resolve(url);}
     });
   });
