@@ -23,6 +23,33 @@ Codex内蔵ブラウザでローカルのアプリを開き、ページが登録
 
 これ以前の独立Chromeでの試験では、実際の利用者がS03・粗利額へ変更し、Codexが条件を再取得して分析を続ける引き継ぎも確認した。この先行試験は一時的なPlaywrightブリッジ経由であり、上記のSite tools実行とは別の試験である。
 
+## Codex CLIでの検証
+
+2026-09-29、Codex CLI 0.153.4で実施した対話的な試験では、Chromeの対象タブを取得・再読み込みできたが、タブのcapabilityに`webmcp`がなかった。続いて、利用者から共有されたCLI 0.158.0の実行報告でも同じ制約を確認した。後者は利用者の報告に基づく記録であり、このリポジトリの自動テスト結果ではない。
+
+CLI 0.158.0で報告された操作と結果:
+
+| 操作 | 結果 |
+|---|---|
+| ブラウザ連携の取得 | `mcp__cua_repl`経由のChrome extensionが利用可能 |
+| 対象タブの取得 | ローカルの売上分析ページへの接続成功 |
+| `browser.capabilities.list()` | `viewport`のみ |
+| `tab.capabilities.list()` | `pageAssets`のみ |
+| WebMCPツールの検出 | `webmcp` capabilityがなく、`fetchTools`を実行できず |
+| 集計・結果表示 | WebMCP経由では未実行 |
+
+例外エラーや集計失敗ではなく、検出に必要な機能が公開されていなかった。DOMに表示されるツール名は、WebMCP経由でツールやスキーマを取得した証拠には数えていない。集計ボタンのクリック、HTTP API直呼び、アプリ内部関数の実行、既存テスト、デスクトップ版の別セッションへの委譲による代替も、この試験の成功には含めない。
+
+### 仕様と接続経路
+
+2026-09-29に参照した[WebMCP仕様](https://webmachinelearning.github.io/webmcp/)はDraft Community Group Reportであり、確定したW3C標準ではない。WebページがJavaScriptのツールをブラウザ内で公開するAPIを定義している。ページがツールを登録しても、外部CLIとの接続が自動的に成立するわけではない。
+
+[OpenAIのSite toolsガイド](https://learn.chatgpt.com/docs/webmcp)は、内蔵ブラウザでページのツールを発見・利用する機能を説明している。一方、[CodexのMCP対応](https://developers.openai.com/codex/mcp/)はローカルまたはリモートのMCPサーバーとの接続を扱う。通常のMCP対応と、ブラウザのWebMCP連携は分けて判断する必要がある。
+
+今回の観測範囲では、CLIで利用したChrome連携がWebMCP機能を公開していないことが阻害要因だった。これをCLI全環境の非対応、仕様違反、モデルの能力不足、またはアプリの登録処理の不具合と断定しない。提供されるブラウザ・拡張機能・バージョンが変わった場合は再検証が必要。
+
+接続を補う案は `Codex CLI → MCPサーバーとしてのブリッジ → ChromeのネイティブWebMCP → ページ`。この経路は未実装・未検証であり、成功実績には含めない。今後実装する場合も、CLI標準の直接対応とは区別し、ページが登録したツールの検出とネイティブAPIへの呼び出しを記録する。
+
 ## 自動テスト
 
 公開前の環境: macOS、Node 25.2.1、TypeScript 5.8.3、Playwright 1.62.1、Chrome 154.0.8037.58。Python単体テストは3.12.14で再検証。ブラウザsandbox有効。
