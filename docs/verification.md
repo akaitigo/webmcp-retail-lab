@@ -56,3 +56,7 @@ Chrome 154でオブジェクト入力が失敗した事実は残す。`chrome154
 | 人の途中変更を尊重して続行 | 古い表示拒否と再集計を確認 |
 | 数字に基づいた編集可能な下書き | 結果ID参照・冪等性・既存編集の保持を確認 |
 | 実運用の業務システム | 対象外。合成データによる技術検証 |
+
+## CI環境の調整
+
+初回のUbuntu CIでは型検査・ビルド・単体テストまで通った後、Chromiumが`No usable sandbox`で起動できなかった。[初回の実行](https://github.com/akaitigo/webmcp-retail-lab/actions/runs/36511897308)。ブラウザ検証をmacOSランナーへ移し、sandbox有効と同じ9件のUIチェックを維持した。CIではネイティブWebMCPやCodexの実呼び出しは行わない。
